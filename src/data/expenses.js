@@ -1,7 +1,7 @@
 const expences = [
   {
-    No: 1,
-    kind: "",
+    no: 1,
+    type: "",
     amount: 0,
     currency: "PHP",
     category: "",

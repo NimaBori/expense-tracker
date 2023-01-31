@@ -3,11 +3,26 @@ import expenses from "../data/expenses";
 import reducer from "./reducer";
 
 const AppContext = React.createContext();
+const initialTeams = [];
 
 const AppProvider = ({ children }) => {
-  const [transactions, dispatch] = useReducer(reducer, expenses);
+  const [transactions, dispatch] = useReducer(reducer, []);
 
-  return <AppContext.Provider value={{}}>{children}</AppContext.Provider>;
+  // add a new transaction
+  function handleAddTransaction(transact) {
+    dispatch({ type: "add-transaction", transact });
+  }
+
+  return (
+    <AppContext.Provider
+      value={{
+        transactions,
+        handleAddTransaction,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
 };
 
 export const useGlobalContext = () => {

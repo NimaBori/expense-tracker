@@ -2,3 +2,15 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* remove arrow signs in input element type: number for webkit based browsers like chrome or safari. */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* This will remove the arrow sign in firefox based browsers. */
+/*  $('input[type="number"]').css('-moz-appearance','textfield'); */
+
+
