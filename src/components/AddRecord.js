@@ -5,6 +5,15 @@ import Form from "react-bootstrap/Form";
 import { Container } from "react-bootstrap";
 import categories from "../data/categories";
 import { useGlobalContext } from "./context";
+const allPaymentModes = [
+  "Cash",
+  "Debit card",
+  "Credit card",
+  "Bank transfer",
+  "Voucher",
+  "Mobile payment",
+  "Web payment",
+];
 
 const AddRecord = () => {
   // const [modalShow, setModalShow] = useState(false);
@@ -12,6 +21,7 @@ const AddRecord = () => {
 
   const [show, setShow] = useState(false);
   const [paymentType, setPaymentType] = useState("expense");
+  const [paymentMode, setPaymentMode] = useState("");
   const [amount, setAmount] = useState("");
   const [date, setDate] = useState(new Date());
   // const [time, setTime] = useState(new Date().toLocaleTimeString());
@@ -66,6 +76,7 @@ const AddRecord = () => {
       handleAddTransaction({
         no: parseInt(transactions.length + 1),
         type: paymentType,
+        paymentMode,
         amount,
         currency: "PHP",
         category,
@@ -176,6 +187,21 @@ const AddRecord = () => {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
+              <Form.Label for="status">Payment Type</Form.Label>
+              <select
+                id="status"
+                name="status"
+                value={paymentMode}
+                onChange={(e) => setPaymentMode(e.target.value)}
+              >
+                <option value="Cleared">Cleared</option>
+                <option value="Uncleared">Uncleared</option>
+              </select>
+            </Form.Group>
+            <Form.Group
+              className="mb-3"
+              controlId="exampleForm.ControlTextarea1"
+            >
               <Form.Label for="status">Payment Status</Form.Label>
               <select
                 id="status"
@@ -183,8 +209,11 @@ const AddRecord = () => {
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
               >
-                <option value="Cleared">Cleared</option>
-                <option value="Uncleared">Uncleared</option>
+                {allPaymentModes.map((mode, index) => (
+                  <option key={index} value={mode}>
+                    {mode}
+                  </option>
+                ))}
               </select>
             </Form.Group>
             <Form.Group
