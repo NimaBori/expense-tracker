@@ -12,8 +12,8 @@ const ShowTransaction = () => {
         {transactions.map((i, index) => (
           <div key={index} className="border">
             <div>{i.no}</div>
-            <div>{i.category}</div>
-            <div>{i.time}</div>
+            <div>{i.type}</div>
+            <div>{i.amount}</div>
           </div>
         ))}
       </div>
