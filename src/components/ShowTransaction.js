@@ -8,10 +8,9 @@ const ShowTransaction = () => {
   return (
     <div>
       <div>
-        <p>asda</p>
         {transactions.map((i, index) => (
           <div key={index} className="border">
-            <div>{i.no}</div>
+            <div>{i.date}</div>
             <div>{i.type}</div>
             <div>{i.amount}</div>
           </div>

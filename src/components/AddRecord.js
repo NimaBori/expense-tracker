@@ -77,10 +77,11 @@ const AddRecord = () => {
         no: parseInt(transactions.length + 1),
         type: paymentType,
         paymentMode,
-        amount,
+        amount:
+          paymentType === "expense" ? parseInt(-amount) : parseInt(amount),
         currency: "PHP",
         category,
-        date,
+        date: date.toISOString().slice(0, 10),
         time: selectedTime,
         note,
         status,
