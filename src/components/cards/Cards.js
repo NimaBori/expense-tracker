@@ -5,9 +5,15 @@ import BalanceTrend from "./BalanceTrend";
 import EmptyCard from "./EmptyCard";
 import SpendingByCatergories from "./SpendingByCatergories";
 import ExpensesStructure from "./ExpensesStructure";
+import CashFlow from "./CashFlow";
 
 const Cards = () => {
-  const [cards, setCards] = useState([<Dashboard />, <BalanceTrend />]);
+  const [cards, setCards] = useState([
+    <Dashboard />,
+    <BalanceTrend />,
+    <CashFlow />,
+    <ExpensesStructure />,
+  ]);
 
   const handleAddCards = (newCard) => {
     let allTags = [];

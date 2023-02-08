@@ -24,11 +24,9 @@ const BalanceTrend = () => {
         return transact.date;
       })
     ),
-  ];
+  ].sort((a, b) => a - b);
 
-  const soretedDates = dates.sort((a, b) => a - b);
-
-  soretedDates.map((date) => {
+  dates.map((date) => {
     allBalances.push({
       date,
       balance: transactions
