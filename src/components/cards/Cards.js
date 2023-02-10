@@ -6,6 +6,7 @@ import EmptyCard from "./EmptyCard";
 import SpendingByCatergories from "./SpendingByCatergories";
 import ExpensesStructure from "./ExpensesStructure";
 import CashFlow from "./CashFlow";
+import LastRecords from "./LastRecords";
 
 const Cards = () => {
   const [cards, setCards] = useState([
@@ -13,6 +14,8 @@ const Cards = () => {
     <BalanceTrend />,
     <CashFlow />,
     <ExpensesStructure />,
+    <LastRecords />,
+    <SpendingByCatergories />,
   ]);
 
   const handleAddCards = (newCard) => {

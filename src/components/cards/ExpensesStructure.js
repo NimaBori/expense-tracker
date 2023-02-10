@@ -83,7 +83,7 @@ const ExpensesStructure = () => {
           cy={cy}
           startAngle={startAngle}
           endAngle={endAngle}
-          innerRadius={outerRadius + 6}
+          innerRadius={outerRadius + 4}
           outerRadius={outerRadius + 10}
           fill={fill}
         />
@@ -94,13 +94,13 @@ const ExpensesStructure = () => {
         />
         <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
         <text
-          x={ex + (cos >= 0 ? 1 : -1) * 12}
+          x={ex + (cos >= 0 ? 1 : -1) * 8}
           y={ey}
           textAnchor={textAnchor}
           fill="#333"
         >{`PHP ${value}`}</text>
         <text
-          x={ex + (cos >= 0 ? 1 : -1) * 5}
+          x={ex + (cos >= 0 ? 1 : -1) * 8}
           y={ey}
           dy={18}
           textAnchor={textAnchor}
@@ -120,15 +120,15 @@ const ExpensesStructure = () => {
     <Container>
       <h2>Expenses Structure</h2>
       <h4>Total Balance: {currentBalance} PHP</h4>
-      <Container width="100%" height="100%">
-        <PieChart width={400} height={400}>
+      <Container width="100%" height="100%" className="">
+        <PieChart width={700} height={200}>
           <Pie
             activeIndex={activeIndex}
             activeShape={renderActiveShape}
             data={expensesStractue}
             cx="50%"
             cy="50%"
-            innerRadius={60}
+            innerRadius={65}
             outerRadius={80}
             fill="#8884d8"
             dataKey="value"
