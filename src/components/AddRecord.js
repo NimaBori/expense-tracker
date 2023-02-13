@@ -188,7 +188,7 @@ const AddRecord = () => {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label for="status">Payment Type</Form.Label>
+              <Form.Label for="status">Payment Status</Form.Label>
               <select
                 id="status"
                 name="status"
@@ -203,7 +203,7 @@ const AddRecord = () => {
               className="mb-3"
               controlId="exampleForm.ControlTextarea1"
             >
-              <Form.Label for="status">Payment Status</Form.Label>
+              <Form.Label for="status">Payment Type</Form.Label>
               <select
                 id="status"
                 name="status"

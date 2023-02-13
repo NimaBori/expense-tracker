@@ -6,15 +6,13 @@ const PieChartWithNeedle = ({ status, title, maximum }) => {
   const RADIAN = Math.PI / 180;
   let currentValue;
   let single;
-  if (maximum === -Infinity || Math.abs(status) > maximum) {
+  if (maximum === -Infinity) {
     single = 100;
     currentValue = -65;
   } else {
     single = maximum / 3;
     currentValue = status;
   }
-
-  console.log("single: ", single);
 
   const data = [
     { name: "A", value: single, color: "#ff0000" },
@@ -57,8 +55,8 @@ const PieChartWithNeedle = ({ status, title, maximum }) => {
   };
 
   return (
-    <Container>
-      <PieChart width={400} height={180}>
+    <Container className="text-center">
+      <PieChart width={170} height={180}>
         <Pie
           dataKey="value"
           startAngle={220}
@@ -79,7 +77,7 @@ const PieChartWithNeedle = ({ status, title, maximum }) => {
       </PieChart>
       <Container>
         <p>{title}</p>
-        <h5>{status.toString().replace(/000$/, "K")}</h5>
+        <h5>{status.toString().replace(/000$/, "K")} PHP</h5>
       </Container>
     </Container>
   );

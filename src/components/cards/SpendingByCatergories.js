@@ -58,7 +58,7 @@ const SpendingByCatergories = () => {
           <ComposedChart
             layout="vertical"
             width={600}
-            height={150}
+            height={400}
             data={data}
             margin={{
               top: 20,
@@ -80,9 +80,7 @@ const SpendingByCatergories = () => {
                 position: "right",
                 fill: "black",
                 formatter: (value) =>
-                  `PHP ${value
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`,
+                  `₱${value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`,
               }}
             />
           </ComposedChart>

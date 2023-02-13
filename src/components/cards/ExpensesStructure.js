@@ -106,7 +106,7 @@ const ExpensesStructure = () => {
           textAnchor={textAnchor}
           fill="#999"
         >
-          {`(Rate ${(percent * 100).toFixed(2)}%)`}
+          {`(Rate ${Math.round((percent * 100).toFixed(2))}%)`}
         </text>
       </g>
     );
@@ -121,7 +121,7 @@ const ExpensesStructure = () => {
       <h2>Expenses Structure</h2>
       <h4>Total Balance: {currentBalance} PHP</h4>
       <Container width="100%" height="100%" className="">
-        <PieChart width={700} height={200}>
+        <PieChart width={700} height={300}>
           <Pie
             activeIndex={activeIndex}
             activeShape={renderActiveShape}

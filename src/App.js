@@ -4,14 +4,15 @@ import { Container } from "react-bootstrap";
 import AddRecord from "./components/AddRecord";
 import { useGlobalContext } from "./components/context";
 import ShowTransaction from "./components/ShowTransaction";
-
+import ShowRecords from "./components/ShowRecords";
 import Cards from "./components/cards/Cards";
 
 function App() {
   return (
     <div>
       <AddRecord />
-      <ShowTransaction />
+      <ShowRecords />
+      {/* <ShowTransaction /> */}
       <Cards />
     </div>
   );

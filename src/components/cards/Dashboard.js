@@ -18,17 +18,17 @@ const Dashboard = () => {
     }
   });
   const totalExpenses = expenses.reduce((acc, cur) => acc + cur, 0);
-  console.log("dashboard incomes: ", typeof Math.min(...expenses));
+
   return (
-    <Container>
-      <h2>Dashboard</h2>
+    <Container className="d-flex text-center">
+      <h2 className="">Dashboard</h2>
       <PieChartWithNeedle
         status={currentBalance}
         title="BALANCE"
         maximum={Math.max(...incomes)}
       />
       <PieChartWithNeedle
-        status={Math.abs(totalExpenses)}
+        status={totalExpenses}
         title="SPENDING"
         maximum={Math.abs(Math.min(...expenses))}
       />
