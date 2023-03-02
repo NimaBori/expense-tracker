@@ -18,20 +18,22 @@ const Dashboard = () => {
     }
   });
   const totalExpenses = expenses.reduce((acc, cur) => acc + cur, 0);
-
+  console.log("needle spending: ", Math.abs(Math.min(...expenses)));
   return (
-    <Container className="d-flex text-center">
-      <h2 className="">Dashboard</h2>
-      <PieChartWithNeedle
-        status={currentBalance}
-        title="BALANCE"
-        maximum={Math.max(...incomes)}
-      />
-      <PieChartWithNeedle
-        status={totalExpenses}
-        title="SPENDING"
-        maximum={Math.abs(Math.min(...expenses))}
-      />
+    <Container className="text-center">
+      <div className="">Dashboard</div>
+      <Container className="d-flex justify-content-center">
+        <PieChartWithNeedle
+          status={currentBalance}
+          title="BALANCE"
+          maximum={Math.max(...incomes)}
+        />
+        <PieChartWithNeedle
+          status={totalExpenses}
+          title="SPENDING"
+          maximum={Math.abs(Math.min(...expenses))}
+        />
+      </Container>
     </Container>
   );
 };

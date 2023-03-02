@@ -53,19 +53,24 @@ const BalanceTrend = () => {
       <h3>Trend of your balance per expenses in each day.</h3>
       <Container width="100%" height="100%">
         <AreaChart
-          width={500}
+          width={450}
           height={400}
           data={allBalances}
           margin={{
             top: 10,
             right: 30,
-            left: 0,
+            left: -20,
             bottom: 0,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
+          <XAxis
+            dataKey="date"
+            tick={{ fontSize: "0.9rem", fill: "#333", fontWeight: "bold" }}
+          />
+          <YAxis
+            tick={{ fontSize: "0.7rem", fill: "#333", fontWeight: "bold" }}
+          />
           <Tooltip />
           <Area
             type="monotone"

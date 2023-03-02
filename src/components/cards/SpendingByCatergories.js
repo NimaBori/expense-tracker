@@ -28,7 +28,7 @@ const SpendingByCatergories = () => {
 
   const data = [];
   categories.map((cat) => {
-    if (cat !== undefined && categories.length > 1) {
+    if (cat !== undefined && categories.length > 0) {
       data.push({
         name: cat,
         value: Math.abs(
@@ -57,24 +57,31 @@ const SpendingByCatergories = () => {
         <div width="100%" height="100%">
           <ComposedChart
             layout="vertical"
-            width={600}
+            width={550}
             height={400}
             data={data}
             margin={{
               top: 20,
               right: 120,
               bottom: 20,
-              left: 80,
+              left: 30,
             }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis type="number" />
-            <YAxis dataKey="name" type="category" />
+            <XAxis
+              type="number"
+              tick={{ fontSize: "0.7rem", fill: "#333", fontWeight: "bold" }}
+            />
+            <YAxis
+              dataKey="name"
+              type="category"
+              tick={{ fontSize: "0.7rem", fill: "#333", fontWeight: "bold" }}
+            />
             <Tooltip />
             <Area fill="#8884d8" stroke="#8884d8" />
             <Bar
               dataKey="value"
-              barSize={100}
+              barSize={60}
               fill="#413ea0"
               label={{
                 position: "right",

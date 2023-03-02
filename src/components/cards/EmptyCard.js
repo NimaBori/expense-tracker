@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
@@ -9,18 +9,32 @@ import img2 from "../../data/images/Expenses-Structure.jpg";
 
 const EmptyCard = ({ handleAddCards }) => {
   const [modalShow, setModalShow] = useState(false);
-  const cards = [
+  const [active, setActive] = useState(true);
+  const [cards, setCards] = useState([
     {
       component: "SpendingByCatergories",
       name: "Spending by Categories",
       img: img1,
     },
     {
-      component: "ExpensesStructure",
-      name: "Expenses Structure",
+      component: "BalanceTrend",
+      name: "Balance Trends",
       img: img2,
     },
-  ];
+  ]);
+
+  function handleOnClick(card, i) {
+    setCards(cards.filter((card, index) => index !== i));
+    // console.log("length 2 bode shod: ", cards.length);
+    // console.log(i);
+    // console.log(cards.map((card) => card.name));
+    cards.length === 1 && setModalShow(false);
+    cards.length === 1 && setActive(false);
+    handleAddCards(card, cards.length);
+  }
+  // useEffect(() => {
+  //   handleOnClick();
+  // }, [handleAddCards]);
 
   function MydModalWithGrid(props) {
     return (
@@ -33,19 +47,18 @@ const EmptyCard = ({ handleAddCards }) => {
           <Modal.Title id="contained-modal-title-vcenter">ADD CARD</Modal.Title>
         </Modal.Header>
         <Modal.Body className="show-grid">
-          <Container>
-            <Row>
-              <Col xs={12} md={8}>
-                {cards.map((card, index) => (
-                  <Container key={index}>
-                    <h3>{card.name}</h3>
-                    <div onClick={() => handleAddCards(card.component)}>
-                      <img src={card.img} style={{ width: "20rem" }} />
-                    </div>
+          <Container className="">
+            {cards.length > 0 &&
+              cards.map((card, index) => (
+                <Container key={index}>
+                  <h3>{card.name}</h3>
+                  <Container
+                    onClick={() => handleOnClick(card.component, index)}
+                  >
+                    <img src={card.img} style={{ width: "20rem" }} />
                   </Container>
-                ))}
-              </Col>
-            </Row>
+                </Container>
+              ))}
           </Container>
         </Modal.Body>
         <Modal.Footer>
@@ -57,7 +70,11 @@ const EmptyCard = ({ handleAddCards }) => {
 
   return (
     <Container className="border text-center">
-      <Button variant="primary" onClick={() => setModalShow(true)}>
+      <Button
+        variant="primary"
+        style={active ? { display: "inline-block" } : { display: "none" }}
+        onClick={() => setModalShow(true)}
+      >
         ADD A CARD
       </Button>
       <MydModalWithGrid show={modalShow} onHide={() => setModalShow(false)} />

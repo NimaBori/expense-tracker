@@ -6,7 +6,7 @@ const PieChartWithNeedle = ({ status, title, maximum }) => {
   const RADIAN = Math.PI / 180;
   let currentValue;
   let single;
-  if (maximum === -Infinity) {
+  if (maximum === -Infinity || maximum === Infinity) {
     single = 100;
     currentValue = -65;
   } else {
@@ -19,10 +19,10 @@ const PieChartWithNeedle = ({ status, title, maximum }) => {
     { name: "B", value: single, color: "#EF8009" },
     { name: "C", value: single, color: "#5DF5A5" },
   ];
-  const cx = 100;
+  const cx = 50;
   const cy = 100;
-  const iR = 40;
-  const oR = 60;
+  const iR = 35;
+  const oR = 45;
   const value = currentValue;
 
   const needle = (value, data, cx, cy, iR, oR, color) => {
@@ -55,29 +55,31 @@ const PieChartWithNeedle = ({ status, title, maximum }) => {
   };
 
   return (
-    <Container className="text-center">
-      <PieChart width={170} height={180}>
-        <Pie
-          dataKey="value"
-          startAngle={220}
-          endAngle={-40}
-          data={data}
-          cx={cx}
-          cy={cy}
-          innerRadius={iR}
-          outerRadius={oR}
-          fill="#8884d8"
-          stroke="none"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={entry.color} />
-          ))}
-        </Pie>
-        {needle(value, data, cx, cy, iR, oR, "#15250F")}
-      </PieChart>
+    <Container className="d-flex flex-sm-column justify-content-sm-start align-items-center">
+      <div>
+        <PieChart width={100} height={180}>
+          <Pie
+            dataKey="value"
+            startAngle={220}
+            endAngle={-40}
+            data={data}
+            cx={cx}
+            cy={cy}
+            innerRadius={iR}
+            outerRadius={oR}
+            fill="#8884d8"
+            stroke="none"
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          {needle(value, data, cx, cy, iR, oR, "#15250F")}
+        </PieChart>
+      </div>
       <Container>
         <p>{title}</p>
-        <h5>{status.toString().replace(/000$/, "K")} PHP</h5>
+        <p>{status.toString().replace(/000$/, "K")} PHP</p>
       </Container>
     </Container>
   );
