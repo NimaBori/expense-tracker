@@ -97,13 +97,11 @@ const AddRecord = () => {
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShow(true)}>
-        + Record
-      </Button>
+      <span onClick={() => setShow(true)}>+ Record</span>
 
       <Modal show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Add New Records</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
